@@ -13,8 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.drawable.toDrawable
 import com.lospollos.numbersandcolors.Constants.ERROR
 import com.lospollos.numbersandcolors.Constants.SUCCESS
-import com.lospollos.numbersandcolors.Constants.Y
+import com.lospollos.numbersandcolors.Constants.X
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.asin
 
 class RotationHelper {
@@ -30,7 +31,7 @@ class RotationHelper {
         @RequiresApi(Build.VERSION_CODES.O)
         override fun onSensorChanged(event: SensorEvent?) {
             var rotation = asin(
-                event?.values?.get(Y) ?: throw Exception(exceptionMessage)
+                abs(event?.values?.get(X) ?: throw Exception(exceptionMessage))
             ).toDouble() * 2
             while (rotation > angle) {
                 rotation -= angle

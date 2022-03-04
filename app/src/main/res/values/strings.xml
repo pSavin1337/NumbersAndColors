@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Numbers and Colors</string>
+    <string name="error_toast_text">Sensor is not found</string>
 </resources>

@@ -9,11 +9,14 @@ import com.lospollos.numbersandcolors.data.RotationHelper
 class ColorViewModel : ViewModel() {
 
     val isSuccess = MutableLiveData<Int>()
+    val colorVal = MutableLiveData<Float>()
 
-    private val rotationHelper = RotationHelper()
+    private val rotationHelper = RotationHelper {
+        colorVal.value = it
+    }
 
-    fun onResume(context: Context, container: ConstraintLayout) {
-        isSuccess.value = rotationHelper.initializeSensor(context, container)
+    fun onResume(context: Context) {
+        isSuccess.value = rotationHelper.initializeSensor(context)
     }
 
     fun onPause() {
